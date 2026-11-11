@@ -1,0 +1,94 @@
+{
+  "director": {
+    "width": 1920,
+    "height": 2560,
+    "sources": [
+      {
+        "w": 640,
+        "src": "/images/director-640.webp"
+      },
+      {
+        "w": 1080,
+        "src": "/images/director-1080.webp"
+      },
+      {
+        "w": 1600,
+        "src": "/images/director-1600.webp"
+      }
+    ]
+  },
+  "quartz-pillar": {
+    "width": 498,
+    "height": 496,
+    "sources": [
+      {
+        "w": 498,
+        "src": "/images/quartz-pillar-498.webp"
+      }
+    ]
+  },
+  "sandstone-wall": {
+    "width": 756,
+    "height": 1008,
+    "sources": [
+      {
+        "w": 640,
+        "src": "/images/sandstone-wall-640.webp"
+      },
+      {
+        "w": 756,
+        "src": "/images/sandstone-wall-756.webp"
+      }
+    ]
+  },
+  "slate-facade": {
+    "width": 810,
+    "height": 1080,
+    "sources": [
+      {
+        "w": 640,
+        "src": "/images/slate-facade-640.webp"
+      },
+      {
+        "w": 810,
+        "src": "/images/slate-facade-810.webp"
+      }
+    ]
+  },
+  "wall-night-1": {
+    "width": 1920,
+    "height": 2560,
+    "sources": [
+      {
+        "w": 640,
+        "src": "/images/wall-night-1-640.webp"
+      },
+      {
+        "w": 1080,
+        "src": "/images/wall-night-1-1080.webp"
+      },
+      {
+        "w": 1600,
+        "src": "/images/wall-night-1-1600.webp"
+      }
+    ]
+  },
+  "wall-night-2": {
+    "width": 1920,
+    "height": 2560,
+    "sources": [
+      {
+        "w": 640,
+        "src": "/images/wall-night-2-640.webp"
+      },
+      {
+        "w": 1080,
+        "src": "/images/wall-night-2-1080.webp"
+      },
+      {
+        "w": 1600,
+        "src": "/images/wall-night-2-1600.webp"
+      }
+    ]
+  }
+}

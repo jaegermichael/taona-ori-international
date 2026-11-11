@@ -1,9 +1,79 @@
+export const SITE_URL = 'https://taona-ori-international.vercel.app'
+
 export const CONTACT = {
   phone: '+263 783 220 589',
   phoneHref: 'tel:+263783220589',
+  /** WhatsApp number in international format without "+". Assumed to be the same as the phone line; confirm with the client. */
+  whatsapp: '263783220589',
   email: 'Taonaorint@gmail.com',
   locations: ['Harare', 'Victoria Falls', 'Kwekwe'],
 }
+
+export function whatsappLink(message?: string) {
+  const base = `https://wa.me/${CONTACT.whatsapp}`
+  return message ? `${base}?text=${encodeURIComponent(message)}` : base
+}
+
+/**
+ * Client-supplied photographs (originals in /source-images). Captions describe what is visible;
+ * none of these photos is attributed to a specific named project.
+ */
+export const PHOTOS = {
+  wallNight1: {
+    alt: 'Random rubble stone cladding on a building, lit at night',
+    caption: 'Random rubble stone cladding, night lighting',
+  },
+  wallNight2: {
+    alt: 'Random rubble stone boundary wall with downlights at night',
+    caption: 'Random rubble walling with downlights',
+  },
+  slateFacade: {
+    alt: 'Dark slate strip cladding on a building facade with a site engineer in front',
+    caption: 'Slate strip cladding on a facade',
+  },
+  sandstoneWall: {
+    alt: 'Sandstone strip walling along a boundary wall',
+    caption: 'Sandstone strip walling',
+  },
+  quartzPillar: {
+    alt: 'Multi-tone quartz stone cladding on a feature column at a residence',
+    caption: 'Quartz stone cladding on a feature column',
+  },
+  director: {
+    alt: 'Stanley Mugabe, Director of Taona Ori International',
+    caption: 'Stanley Mugabe, Director',
+  },
+} as const
+
+export type PhotoKey = keyof typeof PHOTOS
+
+/** Finishes shown in the home-page explorer. Only finishes we have real photos of. */
+export const FINISHES: { key: PhotoKey; name: string; note: string; image: PhotoKey }[] = [
+  {
+    key: 'wallNight1',
+    name: 'Random rubble',
+    note: 'Irregular natural stone laid by hand, so no two walls look the same. Used here as full building cladding.',
+    image: 'wallNight1',
+  },
+  {
+    key: 'slateFacade',
+    name: 'Slate strip',
+    note: 'Thin slate strips stacked in tight courses for a dark, layered facade.',
+    image: 'slateFacade',
+  },
+  {
+    key: 'sandstoneWall',
+    name: 'Sandstone strip',
+    note: 'Warm sandstone in long horizontal strips, here run the full length of a boundary wall.',
+    image: 'sandstoneWall',
+  },
+  {
+    key: 'quartzPillar',
+    name: 'Quartz cladding',
+    note: 'Multi-tone quartz strips that turn a plain column into a feature.',
+    image: 'quartzPillar',
+  },
+]
 
 export const NAV_LINKS = [
   { to: '/', label: 'Home' },
@@ -41,18 +111,29 @@ export const PROCESS_STEPS = [
   },
 ]
 
-export const SERVICES = [
+export type Service = {
+  slug: string
+  title: string
+  text: string
+  tags: string[]
+  /** A related real photograph, only where one genuinely shows this kind of work. */
+  image?: PhotoKey
+}
+
+export const SERVICES: Service[] = [
   {
     slug: 'stone-cladding-masonry',
     title: 'Stone Cladding & Masonry',
     text: 'Expert stone cladding including strip walling, rivens, and dolomite finishes — enhancing both the visual appeal and durability of buildings, suited to modern and traditional design.',
     tags: ['Strip walling', 'Rivens', 'Dolomite finishes'],
+    image: 'slateFacade',
   },
   {
     slug: 'custom-cutting-installation',
     title: 'Custom Stone Cutting & Installation',
     text: 'Tailored stone cutting that aligns with architectural requirements. From feature walls to detailed finishes, each piece is precisely cut and professionally installed.',
     tags: ['Feature walls', 'Bespoke cuts', 'Professional installation'],
+    image: 'quartzPillar',
   },
   {
     slug: 'stone-flooring-paving',
@@ -77,6 +158,7 @@ export const SERVICES = [
     title: 'Exterior Design & Landscaping',
     text: 'Landscaping design and execution, outdoor kitchens and entertainment areas, patios, decorative wall features, and swimming pool stone finishes.',
     tags: ['Landscaping', 'Outdoor kitchens', 'Pool finishes'],
+    image: 'wallNight2',
   },
   {
     slug: 'building-construction',
@@ -104,6 +186,8 @@ export type Project = {
   category: 'Residential' | 'Commercial'
   location: string
   summary: string
+  /** Photographs of this specific project. Leave empty until the client supplies them. */
+  photos?: PhotoKey[]
 }
 
 export const PROJECTS: Project[] = [
@@ -158,21 +242,12 @@ export const PROJECTS: Project[] = [
   },
 ]
 
-export const SITE_IMAGES = {
-  wallNight1: '/images/wall-night-1.jpg',
-  wallNight2: '/images/wall-night-2.jpg',
-  quartzPillar: '/images/quartz-pillar.jpg',
-  slateFacade: '/images/slate-facade.jpg',
-  sandstoneWall: '/images/sandstone-wall.jpg',
-  director: '/images/director.jpg',
-}
-
-export const TEAM = [
+export const TEAM: { name: string; role: string; bio: string; image: PhotoKey | null }[] = [
   {
     name: 'Stanley Mugabe',
     role: 'Director / Owner',
     bio: 'Provides strategic leadership and oversees quality and execution.',
-    image: SITE_IMAGES.director as string | null,
+    image: 'director',
   },
   {
     name: 'Nyasha Mugabe',

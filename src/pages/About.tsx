@@ -1,14 +1,26 @@
 import { Link } from 'react-router-dom'
 import Reveal from '../components/Reveal'
-import PageHeader from '../components/PageHeader'
-import { SITE_IMAGES, TEAM, VALUES } from '../data/site'
+import Photo from '../components/Photo'
+import PageHeader, { Accent } from '../components/PageHeader'
+import { TEAM, VALUES } from '../data/site'
+import { usePageMeta } from '../lib/usePageMeta'
 
 export default function About() {
+  usePageMeta({
+    title: 'About Us',
+    description:
+      'Taona Ori International is a Zimbabwean-owned stone construction and design company, established 2019, working in Harare, Victoria Falls and Kwekwe.',
+  })
+
   return (
     <>
       <PageHeader
         eyebrow="About Us"
-        title="Craftsmanship, durability, and timeless design."
+        title={
+          <>
+            Craftsmanship, durability <Accent>&amp; timeless design.</Accent>
+          </>
+        }
         intro="Taona Ori International is a Zimbabwean-owned construction and design company specializing in premium stone work, cladding, and bespoke building solutions for residential and commercial projects. Established 2019."
       />
 
@@ -37,11 +49,7 @@ export default function About() {
           <div className="lg:col-span-4 lg:col-start-9">
             <Reveal delay={0.1}>
               <div className="overflow-hidden">
-                <img
-                  src={SITE_IMAGES.wallNight2}
-                  alt="Stone walling by Taona Ori International"
-                  className="aspect-[4/5] w-full object-cover"
-                />
+                <Photo photo="wallNight2" sizes="(min-width: 1024px) 30vw, 100vw" className="aspect-[4/5] w-full object-cover" />
               </div>
             </Reveal>
           </div>
@@ -63,7 +71,7 @@ export default function About() {
             <Reveal delay={0.05}>
               <div className="border-t-2 border-orange-500 pt-5">
                 <h3 className="font-display text-lg font-semibold">Mission</h3>
-                <p className="mt-3 text-sm leading-relaxed text-white/60">
+                <p className="mt-3 text-sm leading-relaxed text-white/65">
                   To deliver high-quality stone work and construction solutions that exceed client
                   expectations through craftsmanship and professionalism.
                 </p>
@@ -72,7 +80,7 @@ export default function About() {
             <Reveal delay={0.1}>
               <div className="border-t-2 border-white/20 pt-5">
                 <h3 className="font-display text-lg font-semibold">Vision</h3>
-                <p className="mt-3 text-sm leading-relaxed text-white/60">
+                <p className="mt-3 text-sm leading-relaxed text-white/65">
                   To be a leading provider of innovative stone design and construction services in
                   Zimbabwe.
                 </p>
@@ -97,7 +105,7 @@ export default function About() {
       {/* Team */}
       <section className="mx-auto max-w-7xl px-6 py-24 lg:px-10 lg:py-32">
         <Reveal>
-          <p className="font-display text-sm font-semibold tracking-[0.3em] text-orange-500 uppercase">
+          <p className="font-display text-sm font-semibold tracking-[0.3em] text-orange-700 uppercase">
             Leadership &amp; Team
           </p>
           <h2 className="font-display mt-6 max-w-2xl text-4xl font-bold tracking-tight text-charcoal-900 lg:text-5xl">
@@ -115,11 +123,7 @@ export default function About() {
               <div>
                 <div className="overflow-hidden bg-navy-800">
                   {m.image ? (
-                    <img
-                      src={m.image}
-                      alt={`Portrait of ${m.name}`}
-                      className="aspect-[4/5] w-full object-cover"
-                    />
+                    <Photo photo={m.image} sizes="(min-width: 1024px) 22vw, (min-width: 640px) 45vw, 100vw" className="aspect-[4/5] w-full object-cover object-top" />
                   ) : (
                     <div className="flex aspect-[4/5] w-full items-center justify-center bg-navy-800">
                       <span className="font-display text-5xl font-bold text-white/15">
@@ -134,7 +138,7 @@ export default function About() {
                 <h3 className="font-display mt-5 text-xl font-semibold tracking-tight text-charcoal-900">
                   {m.name}
                 </h3>
-                <p className="mt-1 font-display text-sm font-medium text-orange-500">{m.role}</p>
+                <p className="mt-1 font-display text-sm font-medium text-orange-700">{m.role}</p>
                 <p className="mt-3 text-sm leading-relaxed text-charcoal-900/60">{m.bio}</p>
               </div>
             </Reveal>
@@ -151,7 +155,7 @@ export default function About() {
             </h2>
             <Link
               to="/contact"
-              className="rounded-full bg-orange-500 px-8 py-4 font-display font-semibold transition-colors hover:bg-orange-600"
+              className="press rounded-full bg-orange-500 px-8 py-4 font-display font-semibold text-navy-950 hover:bg-white"
             >
               Get in touch
             </Link>

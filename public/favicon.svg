@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Interim favicon: plain "T" monogram in brand colours. Replace with the client's logo when supplied. -->
+  <rect width="64" height="64" rx="12" fill="#08183d"/>
+  <path d="M16 18h32v8H36v24h-8V26H16z" fill="#ffffff"/>
+  <rect x="16" y="52" width="32" height="4" fill="#ef8700"/>
+</svg>
